@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /**
- * main - Display the calculator menu and allow quitting.
+ * main - Display a menu and validate the user's choice.
  *
  * Return: Always 0.
  */
@@ -29,6 +29,9 @@ int main(void)
 			printf("Bye!\n");
 			break;
 		}
+
+		if (choice < 0 || choice > 4)
+			printf("Invalid choice\n");
 	}
 
 	return (0);
