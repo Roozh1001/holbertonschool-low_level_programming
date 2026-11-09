@@ -27,31 +27,32 @@ int main(void)
 			break;
 		}
 
-		if (choice < 0 || choice > 4)
+		if (choice < 1 || choice > 4)
 		{
 			printf("Invalid choice\n");
 			continue;
 		}
 
-		if (choice == 1 || choice == 2 || choice == 3)
-		{
-			printf("A: ");
-			fflush(stdout);
-			if (scanf("%lf", &a) != 1)
-				break;
+		printf("A: ");
+		fflush(stdout);
+		if (scanf("%lf", &a) != 1)
+			break;
 
-			printf("B: ");
-			fflush(stdout);
-			if (scanf("%lf", &b) != 1)
-				break;
+		printf("B: ");
+		fflush(stdout);
+		if (scanf("%lf", &b) != 1)
+			break;
 
-			if (choice == 1)
-				printf("Result: %g\n", a + b);
-			else if (choice == 2)
-				printf("Result: %g\n", a - b);
-			else
-				printf("Result: %g\n", a * b);
-		}
+		if (choice == 1)
+			printf("Result: %g\n", a + b);
+		else if (choice == 2)
+			printf("Result: %g\n", a - b);
+		else if (choice == 3)
+			printf("Result: %g\n", a * b);
+		else if (b == 0)
+			printf("Error: division by zero\n");
+		else
+			printf("Result: %g\n", a / b);
 	}
 
 	return (0);
