@@ -1,9 +1,41 @@
 #include <stdio.h>
 
 
+void clear_input(void)
+{
+	int ch;
+
+	while ((ch = getchar()) != '\n' && ch != EOF)
+	{
+	}
+}
+
+
+int read_number(const char *prompt, double *number)
+{
+	int status;
+
+	while (1)
+	{
+		printf("%s", prompt);
+		fflush(stdout);
+		status = scanf("%lf", number);
+
+		if (status == EOF)
+			return (0);
+
+		if (status == 1)
+			return (1);
+
+		printf("Invalid number\n");
+		clear_input();
+	}
+}
+
+
 int main(void)
 {
-	int choice;
+	int choice, status;
 	double a, b;
 
 	printf("Simple Calculator\n");
@@ -15,11 +47,22 @@ int main(void)
 		printf("3) Multiply\n");
 		printf("4) Divide\n");
 		printf("0) Quit\n");
-		printf("Choice: ");
-		fflush(stdout);
 
-		if (scanf("%d", &choice) != 1)
-			break;
+		while (1)
+		{
+			printf("Choice: ");
+			fflush(stdout);
+			status = scanf("%d", &choice);
+
+			if (status == EOF)
+				return (0);
+
+			if (status == 1 && choice >= 0 && choice <= 4)
+				break;
+
+			printf("Invalid choice\n");
+			clear_input();
+		}
 
 		if (choice == 0)
 		{
@@ -27,20 +70,9 @@ int main(void)
 			break;
 		}
 
-		if (choice < 1 || choice > 4)
-		{
-			printf("Invalid choice\n");
-			continue;
-		}
-
-		printf("A: ");
-		fflush(stdout);
-		if (scanf("%lf", &a) != 1)
+		if (!read_number("A: ", &a))
 			break;
-
-		printf("B: ");
-		fflush(stdout);
-		if (scanf("%lf", &b) != 1)
+		if (!read_number("B: ", &b))
 			break;
 
 		if (choice == 1)
