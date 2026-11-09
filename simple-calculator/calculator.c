@@ -1,10 +1,6 @@
 #include <stdio.h>
 
-/**
- * main - Display a calculator menu with addition and subtraction.
- *
- * Return: Always 0.
- */
+
 int main(void)
 {
 	int choice;
@@ -37,7 +33,7 @@ int main(void)
 			continue;
 		}
 
-		if (choice == 1 || choice == 2)
+		if (choice == 1 || choice == 2 || choice == 3)
 		{
 			printf("A: ");
 			fflush(stdout);
@@ -51,8 +47,10 @@ int main(void)
 
 			if (choice == 1)
 				printf("Result: %g\n", a + b);
-			else
+			else if (choice == 2)
 				printf("Result: %g\n", a - b);
+			else
+				printf("Result: %g\n", a * b);
 		}
 	}
 
